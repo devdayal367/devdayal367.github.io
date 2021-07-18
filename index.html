@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paru's Birthday</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <section>
+        <h2>Today is very special for us</h2>
+        <p>Here we have a small surprise for you.</p>
+        <button class="btn">Click here to see what we have</button>
+
+        <div class="popup">
+            <h2>Happy Birthday <span style="color: darkorange">Parukutty</span></h2>
+            <img src="image/paru.jpg" width="200px">
+            <audio id="myAudio">
+                <source src="music/Happy.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <b class="close">X</b>
+        </div>
+    </section>
+
+    <canvas id="my-canvas"></canvas>
+
+    <script src="script/index.min.js"></script>
+<script>
+    let btn = document.querySelector('.btn');
+    let popup = document.querySelector('.popup');
+    let close = document.querySelector('.close');
+    let confetti = document.querySelector('#my-canvas');
+    var x = document.getElementById("myAudio");
+    btn.onclick = function (){
+        x.play();
+        popup.classList.add('active')
+        confetti.classList.add('active');
+    }
+    close.onclick = function (){
+        popup.classList.remove('active');
+        setTimeout(function (){
+            confetti.classList.remove('active');
+        },3000);
+
+    }
+
+
+    var confettiSettings = { target: 'my-canvas' };
+    var confe = new ConfettiGenerator(confettiSettings);
+    confe.render();
+
+</script>
+</body>
+</html>
